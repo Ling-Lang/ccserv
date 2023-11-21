@@ -44,13 +44,7 @@ void onmessage(ws_cli_conn_t *client,
 
     sleep(1);
     // ws_sendframe_txt(client, "hello");
-    if(!strcmp(msg, "move"))
-    {
-        tmp = "{\"func\":\"reboot\"}";
-        ws_sendframe_txt(client, tmp);
-    }
-    else
-        ws_sendframe_bin(client, msg, sizeof(msg) - 1);
+    ws_sendframe_bin(client, msg, sizeof(msg));
     sleep(1);
 }
 
