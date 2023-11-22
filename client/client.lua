@@ -1,7 +1,9 @@
 os.loadAPI("json")
+os.loadAPI("tank.lua")
 local ws,err = http.websocket("ws://yourPublicWebServer")
+local tInfo = tank.getTank()
 if ws then
-    while true do
+    while msg != "stop" do
         local msg = ws.receive()
         local obj = json.decode(msg)
         local func = loadstring(obj["func"])

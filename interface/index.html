@@ -14,9 +14,14 @@
             }
             function turtleInspect(){
                 ws.send("return turtle.inspect()")
-            }                   
+            }    
+            function c_stop(){
+                ws.send("return tank.getTankInfo()")
+            }               
             ws.addEventListener("message",msg=>{
-                console.log(msg.data)
+                const data = JSON.parse(msg.data);
+                const funcValue = data.func; // Retrieve the value associated with the 'func' key
+                console.log(funcValue);
             })
         </script>
     </head>
@@ -24,6 +29,6 @@
         <button style="font-size: 20px;" onclick="moveTurtleForward()">forward</button>
         <button style="font-size: 20px;" onclick="moveTurtleRight()">right</button>
         <button style="font-size: 20px;" onclick="turtleRefuel()">fuel</button>
-        <button style="font-size: 20px;" onclick="turtleInspect()">inspect</button>
+        <button style="font-size: 20px;" onclick="c_stop()">Stop</button>
     </body>
 </html>
